@@ -34,10 +34,15 @@ module.exports = function toReadable(number) {
     };
 
     let array = number.toString().split("");
+
     if (array.length === 1) {
         if (number === 0)
             return "zero";
 
+        return num[number];
+    };
+
+    if (array.length === 2) {
         return num[number];
     };
 
