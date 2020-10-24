@@ -36,14 +36,18 @@ module.exports = function toReadable(number) {
     let array = number.toString().split("");
 
     if (array.length === 1) {
-        if (number === 0)
+        if (number === 0) {
             return "zero";
+            return num[number];
+        };
 
-        return num[number];
-    };
+        if (array.length === 2) {
+            if (number <= 20) {
+                return dozens[number];
+            } else {
+                return (dozens[(arr[0]) * 10] + " " + num[(arr[1])])
+            }
 
-    if (array.length === 2) {
-        return num[number];
-    };
+        };
 
-}
+    }
