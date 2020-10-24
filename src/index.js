@@ -45,7 +45,7 @@ module.exports = function toReadable(number) {
             if (number <= 20) {
                 return dozens[number];
             } else {
-                return (dozens[(arr[0]) * 10] + " " + num[(arr[1])])
+                return (dozens[(arr[0]) * 10] + " " + num[(arr[1])]);
             }
 
         };
