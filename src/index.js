@@ -56,8 +56,10 @@ module.exports = function toReadable(number) {
                 return (num[+arr[0]] + "hundred").trim();
             } else if (arr[0] !== 0 && arr[1] === 0 && arr[2] !== 0) {
                 return (num[+arr[0]] + "hundred" + num[+arr[2]]).trim();
+            } else if (arr[0] !== 0 && arr[1] === 1 && arr[2] !== 0) {
+                return (num[+arr[0]] + "hundred" + dozens[number]).trim();
             } else {
-                return (num[+arr[0]] + "hundred" + num[+arr[2]]).trim();
+                turn(num[+arr[0]] + "hundred" + dozens[(+arr[i - 2]) * 10] + " " + num[+arr[i - 1]]).trim();
             }
 
         }
