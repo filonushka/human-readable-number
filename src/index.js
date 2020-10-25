@@ -33,21 +33,34 @@ module.exports = function toReadable(number) {
         90: "ninety"
     };
 
-    let array = number.toString().split("");
-
-    if (array.length === 1) {
+    let arr = number.toString().split("");
+    let i = arr.length;
+    if (i === 1) {
         if (number === 0) {
             return "zero";
+        } else {
             return num[number];
-        };
+        }
+    }
 
-        if (array.length === 2) {
-            if (number <= 20) {
-                return dozens[number];
+    if (i === 2) {
+        if (number < 21) {
+            return dozens[number];
+        } else {
+            return (dozens[(+arr[i - 2]) * 10] + " " + num[+arr[i - 1]]).trim();
+        }
+
+
+        if (i === 3) {
+            if (arr[0] !== 0 && arr[1] === 0 && arr[2] === 0) {
+                return (num[+arr[0]] + "hundred").trim();
+            } else if (arr[0] !== 0 && arr[1] === 0 && arr[2] !== 0) {
+                return (num[+arr[0]] + "hundred" + num[+arr[2]]).trim();
             } else {
-                return (dozens[(arr[0]) * 10] + " " + num[(arr[1])]);
+                return (num[+arr[0]] + "hundred" + num[+arr[2]]).trim();
             }
 
-        };
-
+        }
     }
+}
+
