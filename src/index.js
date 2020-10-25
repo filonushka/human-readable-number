@@ -53,13 +53,13 @@ module.exports = function toReadable(number) {
 
     if (i === 3) {
         if (arr[1] === 0 && arr[2] === 0) {
-            return (num[+arr[0]] + "hundred").trim();
+            return (num[+arr[0]] + " hundred").trim();
         } else if (arr[1] === 0) {
-            return (num[+arr[0]] + "hundred" + num[number]).trim();
+            return (num[+arr[0]] + " hundred " + num[+arr[i - 2]]).trim();
         } else if (arr[1] === 1) {
-            return (num[+arr[0]] + "hundred" + dozens[number]).trim();
+            return (num[+arr[0]] + " hundred " + dozens[number]).trim();
         } else {
-            return (num[+arr[0]] + "hundred" + dozens[(+arr[i - 2]) * 10] + " " + num[+arr[i - 1]]).trim();
+            return (num[+arr[0]] + " hundred " + dozens[(+arr[i - 2]) * 10] + " " + num[+arr[i - 1]]).trim();
         }
 
     }
