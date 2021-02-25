@@ -9,7 +9,7 @@ module.exports = function toReadable(number) {
         6: "six",
         7: "seven",
         8: "eight",
-        9: "nine"
+        9: "nine",
     };
 
     const dozens = {
@@ -30,7 +30,7 @@ module.exports = function toReadable(number) {
         60: "sixty",
         70: "seventy",
         80: "eighty",
-        90: "ninety"
+        90: "ninety",
     };
 
     let arr = number.toString().split("");
@@ -47,21 +47,29 @@ module.exports = function toReadable(number) {
         if (number < 21) {
             return dozens[number];
         } else {
-            return (dozens[(+arr[i - 2]) * 10] + " " + num[+arr[i - 1]]).trim();
+            return (dozens[+arr[0] * 10] + " " + num[+arr[1]]).trim();
         }
     }
 
     if (i === 3) {
-        if (arr[1] === 0 && arr[2] === 0) {
-            return (num[+arr[0]] + " hundred").trim();
-        } else if (arr[1] === 0) {
-            return (num[+arr[0]] + " hundred " + num[+arr[i - 2]]).trim();
-        } else if (arr[1] === 1) {
-            return (num[+arr[0]] + " hundred " + dozens[number]).trim();
+        if (+arr[1] === 0 && +arr[2] === 0) {
+            return (num[+arr[0]] + " hundred ").trim();
+        } else if (+arr[1] === 0) {
+            return (num[+arr[0]] + " hundred " + num[+arr[2]]).trim();
+        } else if (+arr[1] === 1) {
+            return (
+                num[+arr[0]] +
+                " hundred " +
+                dozens[+(arr[1] + arr[2])]
+            ).trim();
         } else {
-            return (num[+arr[0]] + " hundred " + dozens[(+arr[i - 2]) * 10] + " " + num[+arr[i - 1]]).trim();
+            return (
+                num[+arr[0]] +
+                " hundred " +
+                dozens[+arr[1] * 10] +
+                " " +
+                num[+arr[2]]
+            ).trim();
         }
-
     }
-
-}
+};
